@@ -30,4 +30,3 @@ function changeStuff() {
     document.getElementById(_id).innerHTML += " Stuff"; // Beispiel: html-string-"Wert" wird durch stuff erweitert.
     document.getElementById(_id).className = "centered";
 }
-//# sourceMappingURL=greeter.js.map
