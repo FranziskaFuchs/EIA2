@@ -36,7 +36,5 @@ namespace Boxes {
         div.style.backgroundColor = _color;
         div.style.left = _x + "px";
         div.style.top = _y + "px";
-        
     }
 }
-
