@@ -7,7 +7,6 @@ namespace Boxes {
     for (let i: number = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
         x = (x + 170) % 400;
-        debugger;
         switch (i) {
             case 0:
                 color = "#ff0000";
@@ -37,6 +36,7 @@ namespace Boxes {
         div.style.backgroundColor = _color;
         div.style.left = _x + "px";
         div.style.top = _y + "px";
+        
     }
 }
 
