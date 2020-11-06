@@ -1,82 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="uft-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hexenkessel</title>
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-    <script src="Hexenkessel.js" type="text/javascript" charset="utf-8"></script>
-
+	<script src="Hexenkessel.js"></script> </script>
 </head>
-<body> 
+
+
+<body>
     <header>
         <h1>Hexenkessel</h1>
-        
     </header>
 
-<form>
-    <div id="form">
-        <h2>Choose here</h2>
-        <fieldset>
-             <legend>Name</legend>
-                <input type="name" name = "Name" placeholder="create here" />       
-            <legend>Risks and side effects: </legend>
-                <textarea id ="area" name="area" rows="3" cols="33" placeholder="type here"></textarea>
-            <legend>Wirkung</legend>
-                <select name="Wirkung">
-                <option value="Liebestrank" price="25">Liebestrank</option>
-                <option value="Unsichtbarkeitstrank" price="30">Unsichtbarkeitstrank</option>
-                <option value="Stärketrank" price="21">Stärketrank</option>
-            </select>
-            <legend>Wirkungsdauer</legend>
-                <input type="number" name="hour"  min="0.1" max="100" step="0.1" value="0.1" />
-                <label for="hour">h</label>
-        </fieldset>
-        <fieldset>
-            <legend>Farbe</legend>
-                <input type="color" id="color" placeholder="red" />
-            <legend>Ingredients</legend>
-                <input type="checkbox" name="ingredients" id="spider" value="Spiderlegs" price="0.50">
-                 <label for="spider">Spiderlegs</label>
-                <input type="checkbox" name="ingredients" id="mouse" value="Mäusepupse" price="0.30">
-                 <label for="mouse">Mäusepupse</label>
-                <input type="checkbox" name="ingredients" id="echse" value="Echsenblut" price="0.90">
-                 <label for="echse">Echsenblut</label>
-                <input type="checkbox" name="ingredients" id="dog" value="Hundepfoten" price="10.00">
-                 <label for="dog">Hundepfoten</label>
-            <legend>Erhitzen / Abkühlen</legend>
-                <span id="slider">
-                <span> 
-                <input type="radio" name="Erhitzen" id="erhitzen" min="0.1" max="100.0" step="0.1" value="0.1">
-                <input type="radio" name="Abkühlen" id="abkühlen" min="0.1" max="100.0" step="0.1" value="0.1">
-                <label for="erhitzen">°</label>
-            </span>
-                <progress max="100.0" value="0.1">
-            </span>
-            <legend>Geschwindigkeit</legend>
-                <input type="checkbox" name="slow" id="langsam" value="Langsam">
-                <label for="langsam">Langsam</label>
-                <input type="checkbox" name="medium" id="mittel" value="Mittel">
-                <label for="mittel">Mittel</label>
-                <input type="checkbox" name="fast" id="schnell" value="Schnell">
-                <label for="schnell">Schnell</label>   
-            <legend>Konsistenz</legend>
-                <input type="checkbox" name="zäh" id="zäh" value="Zäh">
-                <label for="zäh">Zäh</label>
-                <input type="checkbox" name="schleimig" id="schleimig" value="schleimig">
-                <label for="schleimig">Schleimig</label>
-                <input type="checkbox" name="flüssig" id="flüssig" value="Flüssig">
-                <label for="flüssig">Schnell</label>   
-        </fieldset>
-        
-        </div>
-</form>
+    <form>
+        <div id="form">
+            <fieldset>
+                <legend>Name </legend>
+                    <input type="text" name="potion" id="potion">
+                <legend>Description</legend>
+                    <textarea id="descript" name="descript" ></textarea>
+                <legend>Effect</legend>
+                    <select name="effect" id="effect">
+                        <option value="Liebestrank" id="empty">Liebestrank</option>
+                        <option value="Stärketrank" id="strengh" price="10">Stärketrank</option>
+                        <option value="Lügentrank" id="wisdom" price="15">Lügentrank</option>
+                        <option value="Unsichtbarkeitstrank" id="speed" price="20">Unsichtbarkeitstrank</option>
+                </select>
+                <legend>Wirkung</legend>
+                <span id="timeSlider">
+                    <span>
+                        10 min
+                        <input type="range" name="time" id="time" min="10" max="60" step="10" value="10">
+                        60 min
+                    </span>
+                </span>
+                    <legend>Stir</legend>
+                    <span id="stirSlider">
+                        <span>
+                            slow
+                            <input type="range" name="stir" id="stir" min="1" max="10" step="1" value="1">
+                            fast
+                        </span>
+                    </span>
+            </fieldset>
+            <fieldset>      
+                <button class="Ingredients"
+                            type="button"> Add your Ingredients</button></br>
 
-<div> 
-    <h2>Dein Rezept</h2>
-    <div id="rezept">
-        ...
+                <legend>Ingredients</legend>
+                    <input type="checkbox"  id="schlangenhaut" name="ingredient" value="Schlangenhaut" price="20">
+                    <label for="schlange">Schlangenhaut</label>
+                    <input type="text" id="amountSchlange" name="amountSchlange">Stk<br>
+
+                    <input type="checkbox" id="froschschenkel" name="ingredient" value="Froschschenkel" price="15">
+                    <label for="frosch">Froschschenkel</label>
+                    <input type="text" id="amountFrosch" name="amountFrosch">Stk<br>
+
+                    <input type="checkbox" id="hasenohren" name="ingredient" value="Hasenohren" price="18">
+                    <label for="hase">Hasenohren</label>
+                    <input type="text" id="amountHase" name="amountHase">Stk<br>
+                    <legend>Temperature</legend>
+                    <input type="number" id="temperature" name="temperature" min="-10" max="100">
+
+              
+               
+            
+                <legend>Konsistenz</legend>
+
+                <button class="Konsistenz"
+                type="button"> Konsistenz ändern</button></br>
+
+                <input type="radio" name="consistency" id="liquid" value="liquid" price="2">
+                <label for="liquid">liquid</label><br>
+                <input type="radio" name="consistency" id="medium" value="medium" price="1">
+                <label for="medium">medium</label><br>
+                <input type="radio" name="consistency" id="tough" value="tough" price="3">
+                <label for="tough">tough</label><br>
+           
+                <legend>Color</legend>
+
+                <button class="Color"
+                type="button"> Farbe änden</button></br>
+
+                <input type="color" name="color" id="color">
+            </fieldset>
+        </div>
+    </form>
+
+    <div id="recipe">
+        <h2>Dein Rezept</h2>
+        <div id="display"></div>
     </div>
-</div>
+
 </body>
+
 </html>
