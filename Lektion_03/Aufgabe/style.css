@@ -27,6 +27,7 @@ header{
 div{
     border: thin solid rgb(143, 2, 37);
     margin: 2em;
+    background-color: rgb(184, 3, 48);
 }
 
 h2{
