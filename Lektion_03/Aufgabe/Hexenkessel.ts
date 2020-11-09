@@ -14,7 +14,7 @@ function handleChange(_event:Event):void{
     order.innerHTML=" ";
 
     let formData: FormData = new FormData(document.ondragover[0]);
-    for (let entry of FormData){
+    for (let entry of <any> FormData){
             let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1]+ "']");
             let price: number = Number(item.getAttribute("price"));
 

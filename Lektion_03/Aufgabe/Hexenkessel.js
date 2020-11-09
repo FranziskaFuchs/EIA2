@@ -11,8 +11,8 @@ var L04_Hexenkessel;
         var order = document.querySelector("div#order");
         order.innerHTML = " ";
         var formData = new FormData(document.ondragover[0]);
-        for (var _i = 0, FormData_1 = FormData; _i < FormData_1.length; _i++) {
-            var entry = FormData_1[_i];
+        for (var _i = 0, _a = FormData; _i < _a.length; _i++) {
+            var entry = _a[_i];
             var item = document.querySelector("[value='" + entry[1] + "']");
             var price = Number(item.getAttribute("price"));
             order.innerHTML += item.name + " € " + price;
