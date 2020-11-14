@@ -31,15 +31,15 @@ var L05_Hexenkessel;
                     title.innerHTML = "Potion name: " + target.value;
                     break;
                 case "Area":
-                    var description = document.getElementById("trankbeschreibung");
+                    var description = document.getElementById("beschreibung");
                     description.innerHTML = "Description/Risks: " + target.value;
                     break;
                 case "DatalistEffect":
-                    var effect = document.getElementById("trankwirkung");
+                    var effect = document.getElementById("wirkung");
                     effect.innerHTML = "Effect: " + target.value;
                     break;
                 case "DauerStepper":
-                    var duration = document.getElementById("trankdauer");
+                    var duration = document.getElementById("dauer");
                     duration.innerHTML = "Duration of effect: " + target.value + " hours";
                     break;
             }
@@ -47,11 +47,11 @@ var L05_Hexenkessel;
         else if (_event.type == "input") {
             switch (target.name) {
                 case "MengenSlider":
-                    var quantity = document.getElementById("mengenwert");
+                    var quantity = document.getElementById("menge");
                     quantity.innerHTML = target.value + " piece(s)/drop(s)";
                     break;
                 case "TemperaturSlider":
-                    var temp = document.getElementById("temperaturwert");
+                    var temp = document.getElementById("temperatur");
                     temp.innerHTML = target.value;
                     break;
                 case "TempEndconditionDur":
@@ -84,7 +84,7 @@ var L05_Hexenkessel;
                     anweisung += 1;
                     break;
                 case "addTempinstruction":
-                    var temp = document.getElementById("temperaturwert");
+                    var temp = document.getElementById("temperatur");
                     var tempConditionStr = "stop when ";
                     if (temperature.id == "endradio1") {
                         var tempduration = document.getElementById("TempEndconditionDur");
@@ -102,7 +102,7 @@ var L05_Hexenkessel;
                     instructiondiv.append(p);
                     anweisung += 1;
                     break;
-                case "addStirinstruction":
+                case "addStir":
                     var stirintensity = document.getElementById("intensitywert");
                     var stirConditionStr = "stop when ";
                     if (stir.id == "endradio1stir") {

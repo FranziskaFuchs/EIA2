@@ -35,15 +35,15 @@ namespace L05_Hexenkessel {
                     title.innerHTML = "Potion name: " + target.value;
                     break;
                 case "Area":
-                    let description: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("trankbeschreibung");
+                    let description: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("beschreibung");
                     description.innerHTML = "Description/Risks: " + target.value;
                     break;
                 case "DatalistEffect":
-                    let effect: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("trankwirkung");
+                    let effect: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("wirkung");
                     effect.innerHTML = "Effect: " + target.value;
                     break;
                 case "DauerStepper":
-                    let duration: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("trankdauer");
+                    let duration: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("dauer");
                     duration.innerHTML = "Duration of effect: " + target.value + " hours";
                     break;
             }
@@ -51,11 +51,11 @@ namespace L05_Hexenkessel {
         else if (_event.type == "input") {
             switch (target.name) {
                 case "MengenSlider":
-                    let quantity: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("mengenwert");
+                    let quantity: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("menge");
                     quantity.innerHTML = target.value + " piece(s)/drop(s)";
                     break;
                 case "TemperaturSlider":
-                    let temp: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("temperaturwert");
+                    let temp: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("temperatur");
                     temp.innerHTML = target.value;
                     break;
                 case "TempEndconditionDur":
@@ -90,7 +90,7 @@ namespace L05_Hexenkessel {
                     break;
 
                 case "addTempinstruction":
-                    let temp: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("temperaturwert");
+                    let temp: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("temperatur");
                     let tempConditionStr: string = "stop when ";
                     if (temperature.id == "endradio1") {
                         let tempduration: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("TempEndconditionDur");
@@ -110,7 +110,7 @@ namespace L05_Hexenkessel {
                     anweisung += 1;
                     break;
 
-                case "addStirinstruction":
+                case "addStir":
                     let stirintensity: HTMLParagraphElement = <HTMLParagraphElement>document.getElementById("intensitywert");
                     let stirConditionStr: string = "stop when ";
                     if (stir.id == "endradio1stir") {
