@@ -1,100 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title>Hexenkessel</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-    <script src="type.js"></script> </script>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src= "type.js" type= "text/javascript"></script>
 </head>
-
-
 <body>
-    
-    <header>
-        <h1>Hexenkessel</h1>
-    </header>
-
-    <form>
-        <div id="form">
-           
+    <h1>Hexenkessel</h1>
+    <main>
+        <form id="form">
+            <fieldset id="input">
+                <legend>Input</legend>
+                <label for="Trankname">Name</label><br>
+                <input type="text" id="Trankname" name="Trankname" placeholder="Choose your Name"><br>
+                <label for="textarea">Risiken und Nebenwirkungen</label><br>
+                <textarea id="textarea" placeholder="Gib hier die Risiken und Nebenwirkungen ein:"></textarea>
+            </fieldset>
             <fieldset>
-                <legend>Name </legend>
-                    <input type="text" name="potion" id="potion">
-                <legend>Description</legend>
-                    <textarea id="descript" name="descript" ></textarea>
-                <legend>Effect</legend>
-                    <select name="effect" id="effect">
-                        <option value="Liebestrank" id="empty">Liebestrank</option>
-                        <option value="Stärketrank" id="strengh" price="10">Stärketrank</option>
-                        <option value="Lügentrank" id="wisdom" price="15">Lügentrank</option>
-                        <option value="Unsichtbarkeitstrank" id="speed" price="20">Unsichtbarkeitstrank</option>
-                </select>
                 <legend>Wirkung</legend>
-                <span id="timeSlider">
-                    <span>
-                        10 min
-                        <input type="range" name="time" id="time" min="10" max="60" step="10" value="10">
-                        60 min
-                    </span>
-                </span>
-                    <legend>Stir</legend>
-                    <span id="stirSlider">
-                        <span>
-                            slow
-                            <input type="range" name="stir" id="stir" min="1" max="10" step="1" value="1">
-                            fast
-                        </span>
-                    </span>
+                <input type="text" name="Datalist" list="options" placeholder="Welche Wirkung soll er haben?">
+                <datalist id="options">
+                    <option value="Liebestrank"> </option>
+                    <option value="Stärketrank"> </option>
+                    <option value="Unsichtbarkeitstrank"> </option>
+                </datalist>
             </fieldset>
-            <div id="order">
-            <fieldset>      
-                <button class="Ingredients"
-                            type="button"> Add your Ingredients</button></br>
-
-                <legend>Ingredients</legend>
-                    <input type="checkbox"  id="schlangenhaut" name="ingredient" value="Schlangenhaut" price="20">
-                    <label for="schlange">Schlangenhaut</label>
-                    <input type="text" id="amountSchlange" name="amountSchlange">Stk<br>
-
-                    <input type="checkbox" id="froschschenkel" name="ingredient" value="Froschschenkel" price="15">
-                    <label for="frosch">Froschschenkel</label>
-                    <input type="text" id="amountFrosch" name="amountFrosch">Stk<br>
-
-                    <input type="checkbox" id="hasenohren" name="ingredient" value="Hasenohren" price="18">
-                    <label for="hase">Hasenohren</label>
-                    <input type="text" id="amountHase" name="amountHase">Stk<br>
-                    <legend>Temperature</legend>
-                    <input type="number" id="temperature" name="temperature" min="-10" max="100">
-
-                <legend>Konsistenz</legend>
-
-                <button class="Konsistenz"
-                type="button"> Konsistenz ändern</button></br>
-
-                <input type="radio" name="consistency" id="liquid" value="liquid" price="2">
-                <label for="liquid">liquid</label><br>
-                <input type="radio" name="consistency" id="medium" value="medium" price="1">
-                <label for="medium">medium</label><br>
-                <input type="radio" name="consistency" id="tough" value="tough" price="3">
-                <label for="tough">tough</label><br>
-           
-                <legend>Color</legend>
-
-                <button class="Color"
-                type="button"> Farbe änden</button></br>
-
-                <input type="color" name="color" id="color">
-            </fieldset>
+        </form>
+        <form id="button">
+            <legend>Add Ingredients</legend><div id="Zutaten"></div>
+            
+            <select name="Select" id="Zutaten">
+                <option value="spiderlegs" preis="50" einheit="pieces" selected>Spinnenbeine</option>
+                <option value="roses" preis="10" einheit="köpfe">Rosen</option>
+                <option value="StierZungen" preis="45" einheit="pieces">Stierzunge</option>
+                <option value="bartHaare" preis="80" einheit="hair">Barthaare</option>
+                  
+        </select>
+            <button type="button" id="ingredients">Add</button>
+            <legend>Erhitzen</legend>
+            <div>
+                <input name="heat" id="heat_input" type="range" min="1" max="60" step="1" value="20">
+                <input type="text" id="bubbleheat_input" value="20" class="time" disabled> °C <br>
+                <input type="checkbox" id="Konsistenz_Heat" name="heating" value="Konsistenz"> 
+                <label for="Konsistenz_Heat">Bis zu dieser Konsistenz:</label>
+                <p class="reveal">
+                    <select id="Konsistenz_value">
+                        <option value="zäh">zäh</option>
+                        <option value="schleimig">schleimig</option>
+                        <option value="flüssig">flüssig</option>
+                    </select>
+                </p>
+                <input type="checkbox" id="HeatTime" name="heating" value="HeatTime"> 
+                <label for="HeatTime">Erhitzungszeit</label>
+                <p class="reveal">
+                    <input id="HeatTime_value" type="range" min="1" max="200" step="1" value="1">
+                    <input type="text" id="bubbleHeatTime_value" value="20" class="time" disabled> min <br>
+                </p>
+                <input type="checkbox" id="HeatColor" name="heating" value="Color"> 
+                <label for="HeatColor">bis folgende Farbe erreicht ist</label>
+                <p class="reveal"><input type="color" id="Color" name="color"></p>
+            </div>    
+            <button type="button" id="heat">Add</button>
+            
+            <legend>Stir</legend>
+            <div>
+                <select name="stir" id="stiring">
+                    <option value="unterheben">langsam</option>
+                    <option value="leicht">mittel</option>
+                    <option value="stark">schnell</option>
+                </select><br>
+                <input type="checkbox" id="Konsistenz" name="stiring" value="Konsistenz"> 
+                <label for="Konsistenz">Bis zu dieser Konsistenz:</label>
+                <p class="reveal">
+                    <select id="Konsistenz_stir">
+                        <option value="zaeh">zäh</option>
+                        <option value="schleimig">schleimig</option>
+                        <option value="flüssig">flüssig</option>
+                    </select>
+                </p>
+                <input type="checkbox" id="stirTime" name="stiring" value="stirTime"> 
+                <label for="stirTime">Rührdauer:</label>
+                <p class="reveal">
+                    <input id="stirTime_value" type="range" min="1" max="200" step="1" value="1"></input>
+                    <input type="text" id="bubblestirTime_value" value="20" class="time" disabled> min <br>
+                </p>
+                
+                <input type="checkbox" id="stirColor" name="stiring" value="stirColor"> 
+                <label for="stirColor">bis folgende Farbe erreicht ist:</label>
+                <p class="reveal"><input type="color" id="ColorStiring" name="color"></p>
+            </div>
+            <button type="button" id="stir">Add</button>
+            <button type="button" id="delete">Delete last</button>
+            <button type="button" id="deleteAll">Delete All</button>
+        </form>
+        <div id="recipe">
+            <h1>Rezept</h1>
+            <div id="basic"><h2>Allgemein</h2></div>
+            <h2>Anweisungen</h2>
+            <div id="action"></div>
+            <div id="total"></div>
         </div>
-    </form>
-
-    <div id="recipe">
-        <h2>Dein Rezept</h2>
-        <div id="display"></div>
-    </div>
+        <form id="send" method="GET">
+            <button type="button" id="submit">Absenden</button>
+        </form>
+        
+    </main>
 </body>
 </html>
