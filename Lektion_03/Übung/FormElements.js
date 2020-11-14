@@ -21,19 +21,22 @@ var L03_FormElements;
         // Handling checkbox
         if (target.type == "checkbox")
             console.log("Checked: " + target.name + " = " + target.checked);
-        Slider response
+        Slider;
+        response;
         if (target.name == "Slider") {
-            let progress: HTMLProgressElement = <HTMLProgressElement>document.getElementsByTagName("progress")[0];
+            var progress = document.getElementsByTagName("progress")[0];
             progress.value = parseFloat(target.value);
         }
-        Meter response
+        Meter;
+        response;
         if (target.name == "Stepper") {
-            let meter: HTMLMeterElement = <HTMLMeterElement>document.querySelector("meter");
+            var meter = document.querySelector("meter");
             meter.value = parseFloat(target.value);
         }
-        Color response
+        Color;
+        response;
         if (target.name == "Color") {
-            let ouput: HTMLOutputElement = <HTMLOutputElement>document.querySelector("output");
+            var ouput = document.querySelector("output");
             ouput.value = target.value;
         }
     }

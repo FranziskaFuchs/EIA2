@@ -26,9 +26,17 @@ header{
 
 div{
     border: thin solid rgb(143, 2, 37);
-    margin: 2em;
+    margin: 5em;
     background-color: rgb(184, 3, 48);
+    
 }
+
+#recipe {
+    margin-top: -66
+    em;
+    margin-left: 65em;   
+}
+
 
 h2{
     text-align: center;

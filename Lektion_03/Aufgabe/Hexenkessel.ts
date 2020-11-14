@@ -23,8 +23,7 @@ function handleChange(_event:Event):void{
 }
 
 //function handleChange(_event:Event):void {
- 
-//let form: HTMLDivElement=<HTMLDivElement>document.querySelector("div#form");
+// /let form: HTMLDivElement=<HTMLDivElement>document.querySelector("div#form");
 //form.innerHTML=" ";
 
 //let formData: FormData = new FormData(document.forms[0]);

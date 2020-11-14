@@ -19,7 +19,7 @@ var L04_Hexenkessel;
         }
     }
     //function handleChange(_event:Event):void {
-    //let form: HTMLDivElement=<HTMLDivElement>document.querySelector("div#form");
+    // /let form: HTMLDivElement=<HTMLDivElement>document.querySelector("div#form");
     //form.innerHTML=" ";
     //let formData: FormData = new FormData(document.forms[0]);
     //for (let entry of formData) {
