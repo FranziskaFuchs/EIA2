@@ -10,7 +10,7 @@ namespace L05_Hexenkessel {
         
         let fieldsets: NodeListOf<HTMLFieldSetElement> = document.querySelectorAll("fieldset");
 
-        // Install listeners on fieldsets
+   
         for (let i: number = 0; i < fieldsets.length; i++) {
             let fieldset: HTMLFieldSetElement = fieldsets[i];
             fieldset.addEventListener("change", handleInfoChange);

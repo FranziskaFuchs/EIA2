@@ -9,7 +9,6 @@ var L05_Hexenkessel;
     function handleLoad(_event) {
         generateContent(exports.data);
         var fieldsets = document.querySelectorAll("fieldset");
-        // Install listeners on fieldsets
         for (var i = 0; i < fieldsets.length; i++) {
             var fieldset = fieldsets[i];
             fieldset.addEventListener("change", handleInfoChange);
