@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Hexenkessel</title>
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    <script src="type.js"></script> </script>
+    
+</head>
+
+
+<body>
+    
+    <header>
+        <h1>Hexenkessel</h1>
+    </header>
+
+    <form>
+        <div id="form">
+           
+            <fieldset>
+                <legend>Name </legend>
+                    <input type="text" name="potion" id="potion">
+                <legend>Description</legend>
+                    <textarea id="descript" name="descript" ></textarea>
+                <legend>Effect</legend>
+                    <select name="effect" id="effect">
+                        <option value="Liebestrank" id="empty">Liebestrank</option>
+                        <option value="Stärketrank" id="strengh" price="10">Stärketrank</option>
+                        <option value="Lügentrank" id="wisdom" price="15">Lügentrank</option>
+                        <option value="Unsichtbarkeitstrank" id="speed" price="20">Unsichtbarkeitstrank</option>
+                </select>
+                <legend>Wirkung</legend>
+                <span id="timeSlider">
+                    <span>
+                        10 min
+                        <input type="range" name="time" id="time" min="10" max="60" step="10" value="10">
+                        60 min
+                    </span>
+                </span>
+                    <legend>Stir</legend>
+                    <span id="stirSlider">
+                        <span>
+                            slow
+                            <input type="range" name="stir" id="stir" min="1" max="10" step="1" value="1">
+                            fast
+                        </span>
+                    </span>
+            </fieldset>
+            <div id="order">
+            <fieldset>      
+                <button class="Ingredients"
+                            type="button"> Add your Ingredients</button></br>
+
+                <legend>Ingredients</legend>
+                    <input type="checkbox"  id="schlangenhaut" name="ingredient" value="Schlangenhaut" price="20">
+                    <label for="schlange">Schlangenhaut</label>
+                    <input type="text" id="amountSchlange" name="amountSchlange">Stk<br>
+
+                    <input type="checkbox" id="froschschenkel" name="ingredient" value="Froschschenkel" price="15">
+                    <label for="frosch">Froschschenkel</label>
+                    <input type="text" id="amountFrosch" name="amountFrosch">Stk<br>
+
+                    <input type="checkbox" id="hasenohren" name="ingredient" value="Hasenohren" price="18">
+                    <label for="hase">Hasenohren</label>
+                    <input type="text" id="amountHase" name="amountHase">Stk<br>
+                    <legend>Temperature</legend>
+                    <input type="number" id="temperature" name="temperature" min="-10" max="100">
+
+                <legend>Konsistenz</legend>
+
+                <button class="Konsistenz"
+                type="button"> Konsistenz ändern</button></br>
+
+                <input type="radio" name="consistency" id="liquid" value="liquid" price="2">
+                <label for="liquid">liquid</label><br>
+                <input type="radio" name="consistency" id="medium" value="medium" price="1">
+                <label for="medium">medium</label><br>
+                <input type="radio" name="consistency" id="tough" value="tough" price="3">
+                <label for="tough">tough</label><br>
+           
+                <legend>Color</legend>
+
+                <button class="Color"
+                type="button"> Farbe änden</button></br>
+
+                <input type="color" name="color" id="color">
+            </fieldset>
+        </div>
+    </form>
+
+    <div id="recipe">
+        <h2>Dein Rezept</h2>
+        <div id="display"></div>
+    </div>
+</body>
+</html>
