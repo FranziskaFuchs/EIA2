@@ -139,9 +139,9 @@ namespace L05_Hexenkessel {
     }
 
     export let data: Ingredients[] = [
-            {name: "frog legs", price: 25},
-            {name: "glitter", price: 10},
-            {name: "mermaid lips", price: 500}];
+            {name: "spider legs", price: 25},
+            {name: "roses", price: 10},
+            {name: "Bart Haare", price: 500}];
 
     export function generateContent(_data: Ingredients[]) {
         console.log(_data);
