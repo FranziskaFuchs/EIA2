@@ -1,0 +1,60 @@
+body {
+    background-color: rosybrown;
+    
+    }
+
+ 
+#orderform{
+position: relative;
+float: right;
+height: max-content;
+width: 420px;
+border: solid;
+background-color: rgb(173, 50, 71);
+right: 10px;
+    }
+
+#orders{
+    width: 15em;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+position: relative;
+float: left;
+height: max-content;
+background-color:  rgb(173, 50, 71);
+left: 10px;
+}
+
+#potionSaved {
+position: absolute;
+left:10px;
+bottom: 10px;
+background-color:  rgb(173, 50, 71);
+
+}
+
+#send_Btn {
+
+position: absolute;
+left:10px;
+bottom: 130px;
+
+}
+#send_Btn:hover {
+background-color: rgb(173, 50, 71);
+    
+}
+
+#del_Btn{
+    position: absolute;
+    left:100px;
+    bottom: 130px;
+
+}
+
+#del_Btn:hover {
+    background-color:rgb(247, 162, 65);
+    
+}

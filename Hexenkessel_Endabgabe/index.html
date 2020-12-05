@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./form_hexenkessel.js"></script>
+    <script src="./generateContent.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <title>Formular für dein Zaubertrank</title>
+</head>
+
+<body>
+
+
+    <div id="orders">
+        <h2>Dein Zaubertrank Rezept</h2>
+    </div>
+
+    <form id="orderform" method="POST">
+
+        <div>
+
+            <fieldset>
+                <legend>Name des Zaubertranks</legend>
+                <input type="text" name="Name" placeholder="z.B. Hokus Pokus" required />
+            </fieldset>
+
+            <fieldset>
+                <legend>Risiken und Nebenwirkungen</legend>
+                <textarea name="Risks" placeholder="Beschreibe hier die Wirkung deines Tranks"></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Art des Zaubertranks</legend>
+                <input type="text" name="Kind" list="options" placeholder="Art des Zaubertranks" multiple />
+                <datalist id="options">
+                    <option value="Liebes-Trank" price="0"></option>
+                    <option value="Vergesslichkeits-Trank"> </option>
+                    <option value="Bleib-Mir-Weg-Trank"></option>
+                    <option value="Gute-Noten-Trank"> </option>
+                    <option value="Glücks-Trank"> </option>
+                    <option value="Kotz-Trank"> </option>
+                    <option value="Stink-Trank"> </option>
+                </datalist>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dauer der Wirkung</legend>
+
+                <input type="radio" name="Duration" id="8Std." value="8Std." price="3.50" checked />
+                <label for="8Std.">8 Std.</label>
+                <input type="radio" name="Duration" id="1Tag" value="1Tag" price="5.00" />
+                <label for="1Tag">1 Tag</label>
+                <input type="radio" name="Duration" id="1Woche" value="1Woche" price="10.00" />
+                <label for="1Woche">1 Woche</label>
+            </fieldset>
+
+            <fieldset id="Inkredenzien">
+                <legend>Inkredenzien zugeben</legend>
+
+                <legend>Menge</legend>
+                <select name="Quantity">
+                    <option value="1 Stück">1 Stück</option>
+                    <option value="2 Stück">2 Stück</option>
+                    <option value="3 Stück">3 Stück</option>
+                    <option value="4 Stück">4 Stück</option>
+                    <option value="5 Stück">5 Stück</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Rühren mit Intesität</legend>
+                Stufe 1
+                <input id="slider" type="range" name="Stir" min="1" max="3" step="1" value="0" />
+                Stufe 3
+            </fieldset>
+
+            <fieldset>
+                <legend>Farbe deines Zaubertranks</legend>
+                <select name="Color">
+                    <option value="lightblue">Blau</option>
+                    <option value="purple">Lila</option>
+                    <option value="green">Grün</option>
+                    <option value="pink">Rosa</option>
+                    <option value="red">Rot</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Konsistenz</legend>
+                <input type="checkbox" name="Consistency" id="schleimig" value="schleimig" price="1.00">
+                <label for="schleimig">schleimig</label>
+                <input type="checkbox" name="Consistency" id="schwabbelig" value="schwabbelig" price="0.50">
+                <label for="schwabbelig">schwabbelig</label>
+                <input type="checkbox" name="Cnsistency" id="flüssig" value="flüssig" price="0.10">
+                <label for="flüssig">flüssig</label>
+            </fieldset>
+        </div>
+
+        <button type="button" id="transfer_Btn">Übernehmen</button>
+
+
+    </form>
+
+    <button type="button" form="orderform" id="send_Btn">Senden</button>
+    <button id="del_Btn">Reset</button>
+    
+    <div id="potionSaved">
+        <fieldset>
+            <legend>Gespeicherte Rezepte</legend>
+            <select name="saved">
+                <option value="lightblue">Blau</option>
+                <option value="purple">Lila</option>
+                <option value="green">Grün</option>
+                <option value="pink">Rosa</option>
+                <option value="red">Rot</option>
+            </select>
+            <button id="loadBtn">Load</button>
+        </fieldset>
+    </div>
+
+</html>

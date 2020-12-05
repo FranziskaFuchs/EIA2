@@ -125,9 +125,9 @@ var L05_Hexenkessel;
     }
 })(L05_Hexenkessel || (L05_Hexenkessel = {}));
 exports.data = [
-    { name: "frog legs", price: 25 },
-    { name: "glitter", price: 10 },
-    { name: "mermaid lips", price: 500 }
+    { name: "spider legs", price: 25 },
+    { name: "roses", price: 10 },
+    { name: "Bart Haare", price: 500 }
 ];
 function generateContent(_data) {
     console.log(_data);
