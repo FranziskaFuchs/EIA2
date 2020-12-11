@@ -118,7 +118,7 @@ function handleLoad(_event:Event):void {
             let y: number = -_min - Math.random()* (_max - _min);
             
             crc2.lineTo(x,y);
-        } Swhile(x < crc2.canvas.width);
+        } while(x < crc2.canvas.width);
     
     crc2.lineTo(x,0);
     crc2.closePath();

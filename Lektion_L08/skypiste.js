@@ -85,7 +85,7 @@ var L08_Skypiste;
                 x += stepMin + Math.random() * (stepMax - stepMin);
                 var y = -_min - Math.random() * (_max - _min);
                 crc2.lineTo(x, y);
-            } while (Swhile(x < crc2.canvas.width));
+            } while (x < crc2.canvas.width);
             crc2.lineTo(x, 0);
             crc2.closePath();
             var gradient = crc2.createLinearGradient(0, 0, 0, _max);
