@@ -15,10 +15,13 @@ function handleLoad(_event:Event):void {
         return;
     crc2=<CanvasRenderingContext2D>canvas.getContext("2d");
 
+    let horizon: number = crc2.canvas.height * golden;
+
     drawBackground ();
     drawSun({x:75 , y:75});
     drawCloud({x:450, y:75}, {x:100, y:50});
-    drawSkypiste({x:crc2.canvas.width / 2, y: crc2.canvas.height * golden}, 100, 600);
+    drawSkypiste({x:crc2.canvas.width / 2 - 200 , y: horizon}, 100, 600);
+    drawMountains({x: 0, y: horizon}, 50, 150, "grey", "lightgrey");
 
     function drawBackground(): void{
         console.log("background");
@@ -83,7 +86,7 @@ function handleLoad(_event:Event):void {
 
     function drawSkypiste(_position: Vektor, _widthBack: number, _widthFront: number): void {
         crc2.beginPath();
-        crc2.moveTo(_position.x + _widthBack / 2, _position.y);
+        crc2.moveTo(_position.x + _widthBack / 8, _position.y);
         crc2.lineTo(crc2.canvas.width / 2 + _widthFront / 2, crc2.canvas.height);
         crc2.lineTo(crc2.canvas.width / 2 - _widthFront / 2, crc2.canvas.height);
         crc2.closePath();
@@ -94,6 +97,39 @@ function handleLoad(_event:Event):void {
 
         crc2.fillStyle = gradient;
         crc2.fill();
+
+    }
+
+    function drawMountains(_position: Vektor, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
+        console.log ("Mountains");
+        let stepMin: number = 10;
+        let stepMax: number = 50;
+        let x: number = 0;
+
+        crc2.save();
+        crc2.translate(_position.x , _position.y);
+
+        crc2.beginPath();
+        crc2.moveTo(0,0);
+        crc2.lineTo(0, -_max);
+
+        do {
+            x += stepMin + Math.random() * (stepMax -stepMin);
+            let y: number = -_min - Math.random()* (_max - _min);
+            
+            crc2.lineTo(x,y);
+        } Swhile(x < crc2.canvas.width);
+    
+    crc2.lineTo(x,0);
+    crc2.closePath();
+    
+    let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, _max);
+    gradient.addColorStop(0, _colorLow);
+    gradient.addColorStop(1, _colorHigh);
+
+    crc2.fillStyle = gradient;
+    crc2.fill();
+
 
     }
 }

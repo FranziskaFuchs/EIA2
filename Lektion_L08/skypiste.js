@@ -8,10 +8,12 @@ var L08_Skypiste;
         if (!canvas)
             return;
         crc2 = canvas.getContext("2d");
+        var horizon = crc2.canvas.height * golden;
         drawBackground();
         drawSun({ x: 75, y: 75 });
         drawCloud({ x: 450, y: 75 }, { x: 100, y: 50 });
-        drawSkypiste({ x: crc2.canvas.width / 2, y: crc2.canvas.height * golden }, 100, 600);
+        drawSkypiste({ x: crc2.canvas.width / 2 - 200, y: horizon }, 100, 600);
+        drawMountains({ x: 0, y: horizon }, 50, 150, "grey", "lightgrey");
         function drawBackground() {
             console.log("background");
             var gradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
@@ -59,13 +61,36 @@ var L08_Skypiste;
         }
         function drawSkypiste(_position, _widthBack, _widthFront) {
             crc2.beginPath();
-            crc2.moveTo(_position.x + _widthBack / 2, _position.y);
+            crc2.moveTo(_position.x + _widthBack / 8, _position.y);
             crc2.lineTo(crc2.canvas.width / 2 + _widthFront / 2, crc2.canvas.height);
             crc2.lineTo(crc2.canvas.width / 2 - _widthFront / 2, crc2.canvas.height);
             crc2.closePath();
             var gradient = crc2.createLinearGradient(0, _position.y, 0, crc2.canvas.height);
             gradient.addColorStop(0, "#E6E6E6");
             gradient.addColorStop(0.6, "white");
+            crc2.fillStyle = gradient;
+            crc2.fill();
+        }
+        function drawMountains(_position, _min, _max, _colorLow, _colorHigh) {
+            console.log("Mountains");
+            var stepMin = 10;
+            var stepMax = 50;
+            var x = 0;
+            crc2.save();
+            crc2.translate(_position.x, _position.y);
+            crc2.beginPath();
+            crc2.moveTo(0, 0);
+            crc2.lineTo(0, -_max);
+            do {
+                x += stepMin + Math.random() * (stepMax - stepMin);
+                var y = -_min - Math.random() * (_max - _min);
+                crc2.lineTo(x, y);
+            } while (Swhile(x < crc2.canvas.width));
+            crc2.lineTo(x, 0);
+            crc2.closePath();
+            var gradient = crc2.createLinearGradient(0, 0, 0, _max);
+            gradient.addColorStop(0, _colorLow);
+            gradient.addColorStop(1, _colorHigh);
             crc2.fillStyle = gradient;
             crc2.fill();
         }
