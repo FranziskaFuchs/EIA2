@@ -1,7 +1,5 @@
 namespace Hexenkessel {
 
-
-
     export interface Item {
         name: string;
         price: number;
@@ -11,8 +9,6 @@ namespace Hexenkessel {
 
         [category: string]: Item[];
     }
-
-
 
     export function generateContant(_data: Data): void {
 

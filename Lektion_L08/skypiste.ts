@@ -1,0 +1,99 @@
+namespace L08_Skypiste {
+    interface Vektor {
+        x:number;
+        y:number;
+    }
+
+
+window.addEventListener("load", handleLoad);
+let crc2: CanvasRenderingContext2D;
+let golden: number=0.62;
+
+function handleLoad(_event:Event):void {
+    let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
+    if(!canvas)
+        return;
+    crc2=<CanvasRenderingContext2D>canvas.getContext("2d");
+
+    drawBackground ();
+    drawSun({x:75 , y:75});
+    drawCloud({x:450, y:75}, {x:100, y:50});
+    drawSkypiste({x:crc2.canvas.width / 2, y: crc2.canvas.height * golden}, 100, 600);
+
+    function drawBackground(): void{
+        console.log("background");
+
+        let gradient: CanvasGradient = crc2.createLinearGradient(0,0,0,crc2.canvas.height);
+        gradient.addColorStop(0,"#0489B1");
+        gradient.addColorStop(golden, "#81DAF5");
+        gradient.addColorStop(1,"white");
+
+        crc2.fillStyle = gradient;
+        crc2.fillRect(0,0,crc2.canvas.width, crc2.canvas.height);
+    }
+
+    function drawSun(_position: Vektor): void{
+        console.log("sun", _position);
+
+        let r1: number = 30;
+        let r2: number = 100;
+        let gradient: CanvasGradient = crc2.createRadialGradient(0,0,r1,0,0,r2);
+
+        gradient.addColorStop(0, "HSLA(60, 100%, 90%, 1)");
+        gradient.addColorStop(1,"HSLA(60, 100%, 50%, 0");
+
+        crc2.save();
+        crc2.translate(_position.x, _position.y);
+        crc2.fillStyle = gradient;
+        crc2.arc(0, 0, r2, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.restore;
+
+    }
+
+    function drawCloud(_position:Vektor, _size:Vektor): void{
+        console.log("Cloud", _position, _size);
+
+        let nParticles: number = 65;
+        let radiusParticle: number = 25;
+        let particle: Path2D = new Path2D();
+        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
+
+        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
+        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 0.5)");
+        gradient.addColorStop(1, "HSLA(0, 100%, 100%, 0)");
+
+        crc2.save();
+        crc2.translate(_position.x, _position.y);
+        crc2.fillStyle = gradient;
+
+        for(let drawn: number = 0; drawn < nParticles; drawn++){
+            crc2.save();
+            let x: number = (Math.random() - 0.5) * _size.x;
+            let y: number = (Math.random() * _size.y);
+            crc2.translate(x,y);
+            crc2.fill(particle);
+            crc2.restore();
+        
+        }
+
+        crc2.restore();
+
+    }
+
+    function drawSkypiste(_position: Vektor, _widthBack: number, _widthFront: number): void {
+        crc2.beginPath();
+        crc2.moveTo(_position.x + _widthBack / 2, _position.y);
+        crc2.lineTo(crc2.canvas.width / 2 + _widthFront / 2, crc2.canvas.height);
+        crc2.lineTo(crc2.canvas.width / 2 - _widthFront / 2, crc2.canvas.height);
+        crc2.closePath();
+
+        let gradient: CanvasGradient = crc2.createLinearGradient(0, _position.y, 0, crc2.canvas.height);
+        gradient.addColorStop(0,"#E6E6E6");
+        gradient.addColorStop(0.6, "white");
+
+        crc2.fillStyle = gradient;
+        crc2.fill();
+
+    }
+}
