@@ -228,10 +228,9 @@ function handleLoad(_event:Event):void {
                 let y: number = Math.random() * 500 + 450;
                 drawSinglePerson({x: x, y: y});   
             } 
-            
+    }
     function drawSinglePerson(): void {
         console.log("single Person")
-    }
  }
  
   }

@@ -167,9 +167,9 @@ var L08_Skypiste;
                 var y = Math.random() * 500 + 450;
                 drawSinglePerson({ x: x, y: y });
             }
-            function drawSinglePerson() {
-                console.log("single Person");
-            }
+        }
+        function drawSinglePerson() {
+            console.log("single Person");
         }
     }
 })(L08_Skypiste || (L08_Skypiste = {}));
