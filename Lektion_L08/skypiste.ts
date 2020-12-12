@@ -127,7 +127,7 @@ function handleLoad(_event:Event):void {
             crc2.lineTo(x,y);
         } while(x < crc2.canvas.width);
     
-    crc2.lineTo(100,0);
+    crc2.lineTo(x,0);
     crc2.closePath();
     
     let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, _max);
