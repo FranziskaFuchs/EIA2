@@ -117,7 +117,7 @@ function handleLoad(_event:Event):void {
         crc2.translate(_position.x , _position.y);
 
         crc2.beginPath();
-        crc2.moveTo(0,0);
+        crc2.moveTo(-1000,0);
         crc2.lineTo(0, -_max);
 
         do {
@@ -125,7 +125,7 @@ function handleLoad(_event:Event):void {
             let y: number = -_min - Math.random()* (_max - _min);
             
             crc2.lineTo(x,y);
-        } while(x < crc2.canvas.width);
+        } while(x < 1000000);
     
     crc2.lineTo(x,0);
     crc2.closePath();
@@ -140,26 +140,7 @@ function handleLoad(_event:Event):void {
 }
 
 
-
-
-    function drawSkiliftpfosten(_position: Vektor):void {
-        console.log("Pfosten");
-        let x: number =  0;
-
-        crc2.save();
-        crc2.translate(_position.x , _position.y);
-
-        crc2.beginPath();
-        crc2.moveTo(550,550);
-        crc2.lineTo(550, -80);
-        crc2.stroke();
-        crc2.lineTo(850,-125);
-        crc2.stroke();
-
     
-        crc2.fillStyle = "black";
-        crc2.restore();
-    }
 
 
     function drawTrees(): void {
@@ -211,11 +192,27 @@ function handleLoad(_event:Event):void {
         crc2.fill();
 
         crc2.restore();
+
+    }  
+    
+    function drawSkiliftpfosten(_position: Vektor):void {
+        console.log("Pfosten");
+        let x: number =  0;
+
+        crc2.save();
+        crc2.translate(_position.x , _position.y);
+
+        crc2.beginPath();
+        crc2.moveTo(700,550);
+        crc2.lineTo(550, -80);
+        crc2.stroke();
+        crc2.lineTo(850,-125);
+        crc2.stroke();
+
+    
+        crc2.fillStyle = "black";
+        crc2.restore();
     }
-
-
-    
-    
     
     function drawSkiliftseil(): void {
         console.log("Seil");
@@ -223,6 +220,17 @@ function handleLoad(_event:Event):void {
 
     function drawPeopel(): void {
         console.log("Peopel");
+    
+        let skiCount: number = 10;
+    
+        for (let i: number = 0; i < skiCount; i++) {
+                let x: number = Math.random() * 350 + 50;
+                let y: number = Math.random() * 500 + 450;
+                drawSinglePerson({x: x, y: y});   
+            } 
+            
+    function drawSinglePerson(): void {
+        console.log("single Person")
     }
  }
  
