@@ -20,7 +20,8 @@ function handleLoad(_event:Event):void {
     drawBackground ();
     drawSun({x:75 , y:75});
     drawCloud({x:450, y:75}, {x:100, y:50});
-    drawMountains({x: 0, y: horizon}, 50, 150, "grey", "lightgrey");
+    drawMountains({x: -1000, y: horizon}, 50, 150, "grey", "lightgrey");
+    drawSkipiste();
     drawSkiliftpfosten({x: -100, y: 1});
     drawTrees();
     drawSkiliftseil();
@@ -84,9 +85,27 @@ function handleLoad(_event:Event):void {
         
         }
 
-        crc2.restore();
-
     }
+    function drawSkipiste(): void {
+    console.log("Skipiste");
+
+    crc2.save();
+    crc2.beginPath();
+    crc2.moveTo(0, crc2.canvas.height / 1.5);
+    crc2.lineTo(crc2.canvas.width, crc2.canvas.height / 2.6);
+    crc2.lineTo(crc2.canvas.width, crc2.canvas.height);
+    crc2.lineTo(-1000, crc2.canvas.height);
+    crc2.closePath();
+
+    let gradient: CanvasGradient = crc2.createLinearGradient(crc2.canvas.width, 160, 0, crc2.canvas.height);
+    gradient.addColorStop(0, "HSL(200, 99%,99%)");
+    gradient.addColorStop(1, "HSL(190, 20%, 60%)");
+
+    crc2.fillStyle = gradient;
+    crc2.fill();
+    crc2.restore();
+}
+
 
     function drawMountains(_position: Vektor, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
         console.log ("Mountains");
@@ -108,7 +127,7 @@ function handleLoad(_event:Event):void {
             crc2.lineTo(x,y);
         } while(x < crc2.canvas.width);
     
-    crc2.lineTo(x,0);
+    crc2.lineTo(100,0);
     crc2.closePath();
     
     let gradient: CanvasGradient = crc2.createLinearGradient(0, 0, 0, _max);
@@ -117,31 +136,86 @@ function handleLoad(_event:Event):void {
 
     crc2.fillStyle = gradient;
     crc2.fill(); 
-}
     crc2.restore();
+}
+
+
 
 
     function drawSkiliftpfosten(_position: Vektor):void {
         console.log("Pfosten");
+        let x: number =  0;
 
         crc2.save();
+        crc2.translate(_position.x , _position.y);
 
         crc2.beginPath();
         crc2.moveTo(550,550);
-        crc2.lineTo(550, -100);
+        crc2.lineTo(550, -80);
+        crc2.stroke();
+        crc2.lineTo(850,-125);
+        crc2.stroke();
 
     
         crc2.fillStyle = "black";
-
-    
-    
+        crc2.restore();
     }
 
-        crc2.restore();
 
     function drawTrees(): void {
         console.log("Trees");
+       
+        crc2.save();
+        crc2.translate(30, 1000);
+        let nRows: number = 4;
+        let ymin: number = 0;
+        let xMax: number = 100;
+        for (let r: number = 0; r < nRows; r++) {
+            ymin += r * 30;
+            let randomX: number = Math.random() * xMax;
+            do {
+                let randomY: number = Math.random() * 50 + ymin;
+                drawSingleTree({x: randomX, y: randomY});
+                randomX = randomX + 50 +  Math.random() * 50;
+            } while (randomX < xMax);
+            xMax += 100;
+        }
+        crc2.restore();
+        
     }
+
+    function drawSingleTree(_position: Vektor): void {
+        console.log("SingleTree");
+
+        crc2.save();
+        crc2.translate(_position.x, _position.y);
+
+        crc2.beginPath();
+        
+        crc2.moveTo(-30, 70);
+        crc2.lineTo(-20, 50);
+        crc2.lineTo(-25, 50);
+        crc2.lineTo(-15, 30);
+        crc2.lineTo(-20, 30);
+        crc2.lineTo(0, 0);
+        crc2.lineTo(20, 30);
+        crc2.lineTo(15, 30);
+        crc2.lineTo(25, 50);
+        crc2.lineTo(20, 50);
+        crc2.lineTo(30, 70);
+
+        crc2.closePath();
+
+
+        crc2.fillStyle = "HSL(120, 60%, " + (Math.random() + 0.09) * 50 + "%)";
+        crc2.fill();
+
+        crc2.restore();
+    }
+
+
+    
+    
     
     function drawSkiliftseil(): void {
         console.log("Seil");
@@ -151,4 +225,5 @@ function handleLoad(_event:Event):void {
         console.log("Peopel");
     }
  }
-}
+ 
+  }
