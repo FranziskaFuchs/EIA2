@@ -12,14 +12,17 @@ var L08_Skypiste;
         drawBackground();
         drawSun({ x: 75, y: 75 });
         drawCloud({ x: 450, y: 75 }, { x: 100, y: 50 });
-        drawSkypiste({ x: crc2.canvas.width / 2 - 200, y: horizon }, 100, 600);
         drawMountains({ x: 0, y: horizon }, 50, 150, "grey", "lightgrey");
+        drawSkiliftpfosten({ x: -100, y: 1 });
+        drawTrees();
+        drawSkiliftseil();
+        drawPeopel();
         function drawBackground() {
             console.log("background");
             var gradient = crc2.createLinearGradient(0, 0, 0, crc2.canvas.height);
             gradient.addColorStop(0, "#0489B1");
-            gradient.addColorStop(golden, "#81DAF5");
-            gradient.addColorStop(1, "white");
+            gradient.addColorStop(0, "#81DAF5");
+            gradient.addColorStop(golden, "white");
             crc2.fillStyle = gradient;
             crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
         }
@@ -59,18 +62,6 @@ var L08_Skypiste;
             }
             crc2.restore();
         }
-        function drawSkypiste(_position, _widthBack, _widthFront) {
-            crc2.beginPath();
-            crc2.moveTo(_position.x + _widthBack / 8, _position.y);
-            crc2.lineTo(crc2.canvas.width / 2 + _widthFront / 2, crc2.canvas.height);
-            crc2.lineTo(crc2.canvas.width / 2 - _widthFront / 2, crc2.canvas.height);
-            crc2.closePath();
-            var gradient = crc2.createLinearGradient(0, _position.y, 0, crc2.canvas.height);
-            gradient.addColorStop(0, "#E6E6E6");
-            gradient.addColorStop(0.6, "white");
-            crc2.fillStyle = gradient;
-            crc2.fill();
-        }
         function drawMountains(_position, _min, _max, _colorLow, _colorHigh) {
             console.log("Mountains");
             var stepMin = 10;
@@ -93,6 +84,25 @@ var L08_Skypiste;
             gradient.addColorStop(1, _colorHigh);
             crc2.fillStyle = gradient;
             crc2.fill();
+        }
+        crc2.restore();
+        function drawSkiliftpfosten(_position) {
+            console.log("Pfosten");
+            crc2.save();
+            crc2.beginPath();
+            crc2.moveTo(550, 550);
+            crc2.lineTo(550, -100);
+            crc2.fillStyle = "black";
+        }
+        crc2.restore();
+        function drawTrees() {
+            console.log("Trees");
+        }
+        function drawSkiliftseil() {
+            console.log("Seil");
+        }
+        function drawPeopel() {
+            console.log("Peopel");
         }
     }
 })(L08_Skypiste || (L08_Skypiste = {}));

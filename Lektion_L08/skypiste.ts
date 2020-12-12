@@ -20,16 +20,20 @@ function handleLoad(_event:Event):void {
     drawBackground ();
     drawSun({x:75 , y:75});
     drawCloud({x:450, y:75}, {x:100, y:50});
-    drawSkypiste({x:crc2.canvas.width / 2 - 200 , y: horizon}, 100, 600);
     drawMountains({x: 0, y: horizon}, 50, 150, "grey", "lightgrey");
+    drawSkiliftpfosten({x: -100, y: 1});
+    drawTrees();
+    drawSkiliftseil();
+    drawPeopel();
+
 
     function drawBackground(): void{
         console.log("background");
 
         let gradient: CanvasGradient = crc2.createLinearGradient(0,0,0,crc2.canvas.height);
         gradient.addColorStop(0,"#0489B1");
-        gradient.addColorStop(golden, "#81DAF5");
-        gradient.addColorStop(1,"white");
+        gradient.addColorStop(0, "#81DAF5");
+        gradient.addColorStop(golden,"white");
 
         crc2.fillStyle = gradient;
         crc2.fillRect(0,0,crc2.canvas.width, crc2.canvas.height);
@@ -80,23 +84,7 @@ function handleLoad(_event:Event):void {
         
         }
 
-        
-
-    }
-
-    function drawSkypiste(_position: Vektor, _widthBack: number, _widthFront: number): void {
-        crc2.beginPath();
-        crc2.moveTo(_position.x + _widthBack / 8, _position.y);
-        crc2.lineTo(crc2.canvas.width / 2 + _widthFront / 2, crc2.canvas.height);
-        crc2.lineTo(crc2.canvas.width / 2 - _widthFront / 2, crc2.canvas.height);
-        crc2.closePath();
-
-        let gradient: CanvasGradient = crc2.createLinearGradient(0, _position.y, 0, crc2.canvas.height);
-        gradient.addColorStop(0,"#E6E6E6");
-        gradient.addColorStop(0.6, "white");
-
-        crc2.fillStyle = gradient;
-        crc2.fill();
+        crc2.restore();
 
     }
 
@@ -128,8 +116,39 @@ function handleLoad(_event:Event):void {
     gradient.addColorStop(1, _colorHigh);
 
     crc2.fillStyle = gradient;
-    crc2.fill();
+    crc2.fill(); 
+}
+    crc2.restore();
 
 
+    function drawSkiliftpfosten(_position: Vektor):void {
+        console.log("Pfosten");
+
+        crc2.save();
+
+        crc2.beginPath();
+        crc2.moveTo(550,550);
+        crc2.lineTo(550, -100);
+
+    
+        crc2.fillStyle = "black";
+
+    
+    
     }
+
+        crc2.restore();
+
+    function drawTrees(): void {
+        console.log("Trees");
+    }
+    
+    function drawSkiliftseil(): void {
+        console.log("Seil");
+    }
+
+    function drawPeopel(): void {
+        console.log("Peopel");
+    }
+ }
 }
