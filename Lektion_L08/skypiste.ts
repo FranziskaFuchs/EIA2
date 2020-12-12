@@ -137,10 +137,8 @@ function handleLoad(_event:Event):void {
     crc2.fillStyle = gradient;
     crc2.fill(); 
     crc2.restore();
+
 }
-
-
-    
 
 
     function drawTrees(): void {
@@ -234,3 +232,5 @@ function handleLoad(_event:Event):void {
  }
  
   }
+
+ }
