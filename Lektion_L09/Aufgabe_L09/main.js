@@ -1,53 +1,52 @@
 var Skipiste_L09;
 (function (Skipiste_L09) {
     console.log("Main");
-    window.addEventListener("load", handleLoad);
-    var imageData;
-    var peopel = [];
+    Skipiste_L09.canvas = document.querySelector("canvas");
+    Skipiste_L09.crc2 = Skipiste_L09.canvas.getContext("2d");
+    Skipiste_L09.canvas.width = 800;
+    Skipiste_L09.canvas.height = 1400;
+    var Mountain = new Skipiste_L09.Vektor(0, 260);
+    var MountainsEnd = new Skipiste_L09.Vektor(650, 200);
     var snowflake = [];
-    function handleLoad() {
-        console.log("load");
-        var canvas = document.querySelector("canvas");
-        if (!canvas)
-            return;
-        Skipiste_L09.crc2 = canvas.getContext("2d");
-        drawBackground();
-        imageData = Skipiste_L09.crc2.getImageData(0, 0, canvas.width, canvas.heigth);
-        createObject();
-        window.setInterval(animate, 100);
-    }
-    function createObject() {
-        for (var i = 0; i < 12; i++) {
-            var peoep = void 0;
-            -;
-            Peopel = new Peopel();
-            peopel.push(peopel);
-        }
-        for (var i = 0; i < 250; i++) {
+    var peopel = [];
+    Skipiste_L09.drawBackground();
+    Skipiste_L09.drawSun();
+    drawMountain();
+    Skipiste_L09.drawTrees();
+    var imageData = Skipiste_L09.crc2.getImageData(0, 0, 800, 1400);
+    drawPeopel();
+    drawSnowflake(200);
+    function drawSnowflake(_number) {
+        Skipiste_L09.crc2.fillStyle = "white";
+        for (var i = 0; i < _number; i++)
             var snowflake_1 = new Skipiste_L09.Snowflake();
-            snowflake_1.push(snowflake_1);
-        }
-    }
-    function animate() {
-        Skipiste_L09.crc2.clearRect(0, 0, Skipiste_L09.crc2.canvas.width, Skipiste_L09.crc2.canvas.height);
-        Skipiste_L09.crc2.putImageData(imageData, 0, 0);
-        moveObjects();
-        drawObjects();
-    }
-    function moveObjects() {
-        for (var i = 0; i < peopel.length; i++) {
-            peopel[i].move(1 / 50);
-        }
-        for (var i = 0; i < snowflake.length; i++) {
-            snowflake[i].move(1 / 50);
-        }
-    }
-    function drawObjects() {
-        for (var i = 0; i < peopel.length; i++) {
-            peopel[i].draw();
-        }
-        for (var i = 0; i < snowflake.length; i++) {
-            snowflake[i].draw();
-        }
+        snowflake.draw();
+        snowflake.push(snowflake);
     }
 })(Skipiste_L09 || (Skipiste_L09 = {}));
+function animation() {
+    crc2.putImageData(imageData, 0, 0);
+    for (var _i = 0, peopels_1 = peopels; _i < peopels_1.length; _i++) {
+        var peopel = peopels_1[_i];
+        peopel.move(1 / 20);
+        peopel.draw(20);
+    }
+    for (var _a = 0, snowflakes_1 = snowflakes; _a < snowflakes_1.length; _a++) {
+        var snowflake = snowflakes_1[_a];
+        snowflake.move(1 / 50);
+        snowflake.draw();
+    }
+}
+function drawPeopel(_number) {
+    var yAxis = 300;
+    for (var i = 0; i < _number; i++) {
+        var v = new Vektor(450, 550);
+        v.random(450, 550, 200, 200);
+        v.y = yAxis;
+        var s = randomColor();
+        var peopel = new Peopel(s, v);
+        peopel.draw(25);
+        peopel.push(peopel);
+        yAxis += 50;
+    }
+}

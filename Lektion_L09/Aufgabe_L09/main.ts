@@ -1,65 +1,65 @@
 namespace Skipiste_L09{
     console.log("Main");
 
-    window.addEventListener("load", handleLoad);
-    export let crc2: CanvasRenderingContext2D;
-    let imageData: ImageData;
+    export let canvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector("canvas");
+    export let crc2: CanvasRenderingContext2D = <CanvasRenderingContext2D>canvas.getContext("2d");
+    canvas.width = 800;
+    canvas.height = 1400;
 
-    let peopel: Peopel[] = [];
+    let Mountain: Vektor = new Vektor(0,260);
+    let MountainsEnd: Vektor = new Vektor(650,200);
     let snowflake: Snowflake[] = [];
-
-    function handleLoad(): void {
-        console.log("load");
-        let canvas:HTMLCanvasElement | null = document.querySelector("canvas");
-        if (!canvas)
-            return;
-        crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
-
-        drawBackground();
-
-        imageData = crc2.getImageData(0, 0, canvas.width, canvas.heigth);
-
-        createObject();
-
-        window.setInterval(animate, 100);
-    }
-
-    function createObject(): void {
-        for (let i: number = 0; i < 12; i++) {
-            let peoep-: Peopel = new Peopel();
-            peopel.push(peopel);
-        }
-
-        for (let i: number = 0; i < 250; i++) {
-            let snowflake: Snowflake = new Snowflake();
-            snowflake.push(snowflake);
-        }
-    }
+    let peopel: Peopel[] = [];
     
-    function animate(): void {
-        crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+    drawBackground();
+    drawSun();
+    drawMountain();
+    drawTrees();
+    let imageData: ImageData = crc2.getImageData(0, 0, 800, 1400);
+    drawPeopel();
+    drawSnowflake(200);
+
+    function drawSnowflake(_number: number): void {
+        crc2.fillStyle = "white";
+
+        for(let i: number = 0; i < _number; i++)
+            let snowflake: Snowflake = new Snowflake();
+            snowflake.draw();
+            snowflake.push(snowflake);
+        
+    }
+
+ }
+    function animation(): void {
         crc2.putImageData(imageData, 0, 0);
-
-        moveObjects();
-        drawObjects();
-    }
-
-    function moveObjects(): void {
-        for (let i: number = 0; i < peopel.length; i++) {
-            peopel[i].move(1 / 50);
+        for(let peopel of peopels) {
+            peopel.move(1/20);
+            peopel.draw(20);
         }
 
-        for (let i: number = 0; i < snowflake.length; i++) {
-            snowflake[i].move(1 / 50);
+        for(let snowflake of snowflakes){
+            snowflake.move(1/50);
+            snowflake.draw();
         }
     }
 
-    function drawObjects(): void {
-        for (let i: number = 0; i < peopel.length; i++) {
-            peopel[i].draw();
+        function drawPeopel(_number: number): void{
+            let yAxis: number = 300;
+            for (let i:number = 0; i < _number; i++){
+                let v: Vektor = new Vektor(450, 550);
+                v.random(450, 550, 200, 200);
+                v.y = yAxis;
+            let s: string = randomColor();
+            let peopel: Peopel = new Peopel(s, v);
+            peopel.draw(25);
+            peopel.push(peopel);
+            yAxis += 50;
+
+            }
         }
-        for (let i: number = 0; i < snowflake.length; i++) {
-            snowflake[i].draw();
-        }
-     }
-}
+
+
+
+
+
+    

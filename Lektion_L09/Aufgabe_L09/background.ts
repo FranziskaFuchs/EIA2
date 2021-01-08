@@ -1,29 +1,26 @@
 namespace Skipiste_L09 {
     console.log("Background")
+    interface Vektor {
+        x:number;
+        y:number;
+    }
 
 export function drawBackground(): void{ 
     let gradient: CanvasGradient = crc2.createLinearGradient(0,0,0,crc2.canvas.height);
         gradient.addColorStop(0,"#0489B1");
         gradient.addColorStop(0, "#81DAF5");
-        gradient.addColorStop(golden,"white");
+        gradient.addColorStop(1,"white");
 
         crc2.fillStyle = gradient;
         crc2.fillRect(0,0,crc2.canvas.width, crc2.canvas.height);
 
-        let horizon: number = crc2.canvas.height * golden;
-    
-
-    drawSun({x:75 , y:75});
-    drawCloud({x:450, y:75}, {x:100, y:50});
-    drawMountains({x: -1000, y: horizon}, 50, 150, "grey", "lightgrey");
-    drawSkipiste();
-    drawTrees();
      }
        
 
-    function drawSun(_position: Vektor): void{
-        console.log("sun", _position);
+  export function drawSun(_radius: number): void{
+        console.log("sun");
 
+        let position: Vektor = new Vektor(175, 75);
         let r1: number = 30;
         let r2: number = 100;
         let gradient: CanvasGradient = crc2.createRadialGradient(0,0,r1,0,0,r2);
@@ -31,16 +28,15 @@ export function drawBackground(): void{
         gradient.addColorStop(0, "HSLA(60, 100%, 90%, 1)");
         gradient.addColorStop(1,"HSLA(60, 100%, 50%, 0");
 
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
         crc2.fillStyle = gradient;
+        crc2.beginPath();
         crc2.arc(0, 0, r2, 0, 2 * Math.PI);
         crc2.fill();
-        crc2.restore;
+        
 
     }
 
-    function drawCloud(_position:Vektor, _size:Vektor): void{
+    export function drawCloud(_position:Vektor, _size:Vektor): void{
         console.log("Cloud", _position, _size);
 
         let nParticles: number = 65;
@@ -67,13 +63,13 @@ export function drawBackground(): void{
         }
 
     }
-    function drawSkipiste(): void {
+    export function drawSkipiste(): void {
     console.log("Skipiste");
 
     crc2.save();
     crc2.beginPath();
-    crc2.moveTo(0, crc2.canvas.height / 1.5);
-    crc2.lineTo(crc2.canvas.width, crc2.canvas.height / 2.6);
+    crc2.moveTo(0, crc2.canvas.height / 2.2);
+    crc2.lineTo(crc2.canvas.width/ 2.3, crc2.canvas.height / 4.0);
     crc2.lineTo(crc2.canvas.width, crc2.canvas.height);
     crc2.lineTo(-1000, crc2.canvas.height);
     crc2.closePath();
@@ -88,8 +84,8 @@ export function drawBackground(): void{
 }
 
 
-    function drawMountains(_position: Vektor, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
-        console.log ("Mountains");
+    export function drawMountains(_position: Vektor, _min: number, _max: number, _colorLow: string, _colorHigh: string): void {
+        console.log ("mountains:", _position, _min, _max);
         let stepMin: number = 10;
         let stepMax: number = 50;
         let x: number = 0;
@@ -98,7 +94,7 @@ export function drawBackground(): void{
         crc2.translate(_position.x , _position.y);
 
         crc2.beginPath();
-        crc2.moveTo(-1000,0);
+        crc2.moveTo(0, 0);
         crc2.lineTo(0, -_max);
 
         do {
@@ -106,7 +102,7 @@ export function drawBackground(): void{
             let y: number = -_min - Math.random()* (_max - _min);
             
             crc2.lineTo(x,y);
-        } while(x < 1000000);
+        } while(x < crc2.canvas.width);
     
     crc2.lineTo(x,0);
     crc2.closePath();
@@ -121,8 +117,7 @@ export function drawBackground(): void{
 
 }
 
-
-    function drawTrees(): void {
+    export function drawTrees(): void {
         console.log("Trees");
        
         crc2.save();
@@ -144,7 +139,7 @@ export function drawBackground(): void{
         
     }
 
-    function drawSingleTree(_position: Vektor): void {
+    export function drawSingleTree(_position: Vektor): void {
         console.log("SingleTree");
 
         crc2.save();

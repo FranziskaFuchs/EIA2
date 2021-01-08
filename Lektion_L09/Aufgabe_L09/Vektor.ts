@@ -1,7 +1,7 @@
 namespace Skipiste_L09 {
     export class Vektor {
-        x: number;
-        y: number;
+        x: number = 0;
+        y: number = 0;
 
         constructor(_x: number, _y: number) {
             this.set(_x, _y);
@@ -20,6 +20,11 @@ namespace Skipiste_L09 {
         add(_addend: Vektor): void {
             this.x += _addend.x;
             this.y += _addend.y;
+        }
+
+        random(_maxX: number, _maxY: number, _minX: number, _minY: number): void {
+            this.x = Math.random() * (_maxX - _minX) + _minX;
+            this.y = Math.random() * (_maxY - _minY) + _minY;
         }
     }
 }

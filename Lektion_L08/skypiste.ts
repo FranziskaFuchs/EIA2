@@ -25,7 +25,7 @@ function handleLoad(_event:Event):void {
     drawSkiliftpfosten({x: -100, y: 1});
     drawTrees();
     drawSkiliftseil();
-    drawSinglePerson();
+    drawPerson();
 
 
     function drawBackground(): void{
